@@ -17,6 +17,8 @@ output:
 
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
+library(WDI)
+library(dplyr)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -30,8 +32,13 @@ style_mono_light(
   title_slide_background_position = "bottom",
   base_color = "#000000",
   code_inline_color = "#13A10E",
-
+  link_color = "#13A10E",
+  code_font_size = "0.7em"
 )
+```
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+xaringanExtra::use_clipboard()
 ```
 
 class: inverse, center, title-slide, middle
@@ -50,66 +57,160 @@ class: inverse, center, title-slide, middle
 
 #### `r Sys.Date()`
 
-<a href="https://your-url" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<a href="https://github.com/bttomio/WDI" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
 <a href="https://github.com/bttomio"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
 
 ---
+class: inverse, center, middle
 
-background-image: url(https://upload.wikimedia.org/wikipedia/commons/b/be/Sharingan_triple.svg)
-
-???
-
-Image credit: [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Sharingan_triple.svg)
+# General View
 
 ---
-class: center, middle
 
-# xaringan
+# World Bank data in `r icon::fa_r_project(colour = "#384CB7")`
 
-### /ʃæ.'riŋ.ɡæn/
+The `WDI` package allows us to search and download data from the World Bank (several datasets, with thousands of variables)
+
+--
+
+**Advantages**
+
+- Reproducible research
+
+--
+
+- Annual, quarterly, and monthly data in long format
+
+--
+
+- Collect, plot, analyse, and estimate econometric models in the same free software
+
+--
+
+**Important links**
+
+- Package website, developed by [Vincent Arel-Bundock](vincent.arel-bundock@umontreal.ca) </br> [https://vincentarelbundock.github.io/WDI/index.html](https://vincentarelbundock.github.io/WDI/index.html)
+
+--
+
+- DataBank, to check variables details </br> [https://databank.worldbank.org/](https://databank.worldbank.org/)
 
 ---
 class: inverse, center, middle
 
-# Get Started
+# Hands-on
+
+Based on the package website </br> https://vincentarelbundock.github.io/WDI/index.html
 
 ---
 
-# Hello World
+**Installation** 
 
-Install the **xaringan** package from [Github](https://github.com/yihui/xaringan):
-
-```{r eval=FALSE, tidy=FALSE}
-devtools::install_github("yihui/xaringan")
+```{r eval=FALSE}
+install.packages('WDI')
 ```
 
 --
 
-You are recommended to use the [RStudio IDE](https://www.rstudio.com/products/rstudio/), but you do not have to.
+**Searching for data** 
 
-- Create a new R Markdown document from the menu `File -> New File -> R Markdown -> From Template -> Ninja Presentation`;<sup>1</sup>
+You need to use **keywords** to search for data with the command `WDIsearch`
+
+```{r eval=FALSE}
+# Search for 'GDP'
+WDIsearch('GDP')
+```
 
 --
 
-- Click the `Knit` button to compile it;
+You can create an object in the global environment to easily navigate all the variables with the keyword
 
---
+```{r}
+# Save results for 'GDP'
+GDP_search <- WDIsearch('GDP')
+```
 
-- or use the [RStudio Addin](https://rstudio.github.io/rstudioaddins/)<sup>2</sup> "Infinite Moon Reader" to live preview the slides (every time you update and save the Rmd document, the slides will be automatically reloaded in RStudio Viewer.
+![](./GDP_search.gif)
+---
 
-.footnote[
-[1] 中文用户请看[这份教程](http://slides.yihui.name/xaringan/zh-CN.html)
+**Collect data**
 
-[2] See [#2](https://github.com/yihui/xaringan/issues/2) if you do not see the template or addin in RStudio.
-]
+*GDP per capita for France (FR) and Brazil (BR)*
+
+```{r}
+# indicator = NY.GDP.PCAP.KD / name = GDP per capita (constant 2010 US$)
+indicator <- c("GDP per capita" = 'NY.GDP.PCAP.KD')
+dat1 <- WDI(indicator, country=c('FR', 'BR'), end = 2019)
+head(dat1)
+```
+
+*GDP per capita (US$ and local currency unity) for France (FR) and Brazil (BR)*
+
+```{r}
+# indicators = NY.GDP.PCAP.KD and NY.GDP.PCAP.KN / names = GDP per capita (constant 2010 US$) and GDP per capita (constant LCU)
+indicators <- c("GDP per capita (US$)" = 'NY.GDP.PCAP.KD', "GDP per capita (LCU)" = "NY.GDP.PCAP.KN")
+dat2 <- WDI(indicators, country=c('FR', 'BR'), end = 2019)
+head(dat2)
+```
 
 ---
-background-image: url(`r xaringan:::karl`)
-background-position: 50% 50%
-class: center, bottom, inverse
 
-# You only live once!
+**Plot data**
+
+```{r, fig.width=10, fig.height=2, fig.align='center'} 
+library(ggplot2)
+# GDP per capita for France and Brazil
+ggplot(dat1, aes(year, `GDP per capita`, color=country)) + geom_line() +
+    xlab('Year') + ylab('GDP per capita')
+```
+
+```{r, fig.width=10, fig.height=2, fig.align='center'} 
+# GDP per capita (US$ and local currency unity) for France and Brazil
+ggplot(dat2, aes(year, color=country)) + 
+  geom_line(aes(year, `GDP per capita (US$)`)) + #<<
+  geom_line(aes(year, `GDP per capita (LCU)`), linetype = "dashed") + #<<
+  xlab('Year') + ylab('GDP per capita') +
+  labs(caption = "GDP per capita (US$), solid; GDP per capita (LCU), dashed") #<<
+```
+
+---
+
+**More details**
+
+```{r, eval=FALSE}
+library(dplyr)
+Data_info <- WDI_data
+Data_series <- as.data.frame(Data_info$series) %>%
+  filter(indicator == "NY.GDP.PCAP.KD")
+colnames(Data_series)
+```
+
+```{r, echo=FALSE}
+library(dplyr)
+Data_info <- WDI_data
+Data_series <- as.data.frame(Data_info$series) %>%
+  filter(indicator == "NY.GDP.PCAP.KD")
+colnames(Data_series)
+```
+
+```{r, eval=FALSE}
+Data_series$description
+```
+
+```{r, echo=FALSE, results='asis'}
+library(dplyr)
+Data_info <- WDI_data
+Data_series <- as.data.frame(Data_info$series) %>%
+  filter(indicator == "NY.GDP.PCAP.KD")
+Data_series$description
+```
+
+```{r}
+Data_countries <- as.data.frame(Data_info$country) %>%
+  filter(country == "Senegal")
+colnames(Data_countries)
+```
 
 ---
 
@@ -140,13 +241,6 @@ You can see an introduction of remark.js from [its homepage](https://remarkjs.co
 It is important to be familiar with remark.js before you can understand the options in **xaringan**.
 
 .footnote[[*] It is different with Pandoc's Markdown! It is limited but should be enough for presentation purposes. Come on... You do not need a slide for the Table of Contents! Well, the Markdown support in remark.js [may be improved](https://github.com/gnab/remark/issues/142) in the future.]
-
----
-background-image: url(`r xaringan:::karl`)
-background-size: cover
-class: center, bottom, inverse
-
-# I was so happy to have discovered remark.js!
 
 ---
 class: inverse, middle, center
@@ -269,13 +363,6 @@ I have not thoroughly tested HTML widgets against **xaringan**. Some may work we
 Similarly, the Shiny mode (`runtime: shiny`) does not work. I might get these issues fixed in the future, but these are not of high priority to me. I never turn my presentation into a Shiny app. When I need to demonstrate more complicated examples, I just launch them separately. It is convenient to share slides with other people when they are plain HTML/JS applications.
 
 See the next page for two HTML widgets.
-
----
-
-```{r out.width='100%', fig.height=6, eval=require('leaflet')}
-library(leaflet)
-leaflet() %>% addTiles() %>% setView(-93.65, 42.0285, zoom = 17)
-```
 
 ---
 
