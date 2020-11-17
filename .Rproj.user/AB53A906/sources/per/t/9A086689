@@ -1,0 +1,26 @@
+{
+    "id": "9A086689",
+    "path": "~/GitHub/WDI/Slides.Rmd",
+    "project_path": "Slides.Rmd",
+    "type": "r_markdown",
+    "hash": "768791628",
+    "contents": "",
+    "dirty": false,
+    "created": 1605561309488.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "cursorPosition": "668,0",
+        "scrollLine": "595",
+        "last_setup_crc32": "6FB0F1A29225586f"
+    },
+    "folds": "266|17|296|0|\n299|96|329|0|\n332|17|362|0|\n365|96|395|0|\n398|17|428|0|\n431|96|461|0|\n471|17|501|0|\n504|96|534|0|\n537|17|563|0|\n566|96|592|0|\n595|17|625|0|\n628|96|658|0|\n",
+    "lastKnownWriteTime": 1605652263,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1605652263261,
+    "read_only": false,
+    "read_only_alternatives": []
+}

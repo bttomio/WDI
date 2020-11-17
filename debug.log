@@ -1,0 +1,8 @@
+[1117/171722.471:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1117/171722.476:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Bruno\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\5362d29c-bfb6-4968-aca6-8f5ca86729a9: The system cannot find the path specified. (0x3)
+[1117/171722.479:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Bruno\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\501a4f3b-f9cc-46c7-b3c7-63657ac9a0e8: The system cannot find the path specified. (0x3)
+[1117/171722.484:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Bruno\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\8053d92e-32ee-40ec-a75d-5cf65dec29c4: The system cannot find the path specified. (0x3)
+[1117/171722.490:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Bruno\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\25aefc86-9f30-46fd-90eb-4ab9f03d032e: The system cannot find the path specified. (0x3)
+[1117/171722.494:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Bruno\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\bb7ada83-5ba4-4c97-83a8-1c1555741e70: The system cannot find the path specified. (0x3)
+[1117/171722.496:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Bruno\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\eb754c4a-a1cf-45a5-86de-72cb84ea2114: The system cannot find the path specified. (0x3)
+[1117/171722.497:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Bruno\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\8060380a-e9ff-469c-96eb-af56228268af: The system cannot find the path specified. (0x3)

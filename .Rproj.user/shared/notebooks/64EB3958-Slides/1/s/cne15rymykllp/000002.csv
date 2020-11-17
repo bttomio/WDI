@@ -1,0 +1,15 @@
+"0","ne_countries(returnclass = ""sf"") %>%
+  left_join(datW, c(""iso_a2"" = ""iso2c"")) %>%
+  filter(iso_a2 != ""ATA"") %>% # remove Antarctica
+  ggplot(aes(fill = `UNEMP`)) +
+  geom_sf() +
+  scale_fill_viridis_c(labels = scales::percent_format(scale = 1)) +
+  theme(legend.position=""bottom"") +
+  labs(
+    title = name_UNEMP,
+    fill = NULL,
+    caption = paste(""Source:"", source_UNEMP) 
+  )
+"
+"2","Error in FUN(X[[i]], ...) : object 'UNEMP' not found
+"
