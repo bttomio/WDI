@@ -8,16 +8,16 @@
     <meta name="github-repo" content="bttomio/WDI"/>
     <meta name="twitter:title" content="Collect and use open access World Bank data to know your country"/>
     <meta name="twitter:description" content="Introduction to the R package WDI. Presented at R in Grenoble - Working Sessions 2020."/>
-    <meta name="twitter:url" content="https://build-your-own-universe.netlify.app"/>
-    <meta name="twitter:image:src" content="https://build-your-own-universe.netlify.app/social-card.png"/>
+    <meta name="twitter:url" content="https://bttomio.github.io/slides/WDI/Slides.html"/>
+    <meta name="twitter:image:src" content="https://bttomio.github.io/slides/WDI/share-card.png"/>
     <meta name="twitter:image:alt" content="Collect and use open access World Bank data to know your country, presented at R in Grenoble - Working Sessions 2020 by Bruno Thiago Tomio"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@bttomio"/>
     <meta name="twitter:site" content="@bttomio"/>
     <meta property="og:title" content="Collect and use open access World Bank data to know your country"/>
     <meta property="og:description" content="Introduction to the R package WDI. Presented at R in Grenoble - Working Sessions 2020."/>
-    <meta property="og:url" content="https://build-your-own-universe.netlify.app"/>
-    <meta property="og:image" content="https://build-your-own-universe.netlify.app/social-card.png"/>
+    <meta property="og:url" content="https://bttomio.github.io/slides/WDI/Slides.html"/>
+    <meta property="og:image" content="https://bttomio.github.io/slides/WDI/share-card.png"/>
     <meta property="og:image:alt" content="Collect and use open access World Bank data to know your country, presented at R in Grenoble - Working Sessions 2020 by Bruno Thiago Tomio"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
@@ -3907,7 +3907,7 @@ hrg %&gt;%
     range = c(1,20)) +
   theme_minimal() +
   labs(
-    title = "An Example of Hans Rosling's Gapminder using WDI",
+    title = "An Example of Hans Rosling's Gapminder using WDI (Data for 2018)",
     x = "GDP per capita (log scale)",
     y = "Life expectancy at birth",
     size = "Population",
@@ -3921,7 +3921,7 @@ hrg %&gt;%
 .panel[.panel-name[Code HRG 2]
 
 ```r
-library(ggrepel)
+*library(ggrepel)
 
 *hrg2 &lt;- hrg %&gt;%
 * left_join(Data_countries, "iso2c") %&gt;%
