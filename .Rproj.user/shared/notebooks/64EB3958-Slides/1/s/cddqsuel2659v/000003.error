@@ -1,1 +1,0 @@
-{"frames":[{"func":"WDI(indicators, country = c(\"FR\", \"BR\"), end = 2019)","file":"","line_number":0,"end_line_number":0,"character_number":0,"end_character_number":0}],"message":"Error in WDI(indicators, country = c(\"FR\", \"BR\"), end = 2019) : \n  object 'indicators' not found\n"}

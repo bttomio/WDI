@@ -12,6 +12,7 @@ output:
       highlightStyle: github
       highlightLines: true
       countIncrementalSlides: false
+      beforeInit: "macros.js"
     seal: false
 ---
 
@@ -42,6 +43,11 @@ meta() %>%
 options(htmltools.dir.version = FALSE)
 library(WDI)
 library(dplyr)
+library(rnaturalearth)
+library(tidyverse)
+library(ggplot2)
+library(ggthemes)
+library(ggrepel)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -72,6 +78,8 @@ xaringanExtra::use_share_again()
 xaringanExtra::use_panelset()
 ```
 
+count: false
+
 class: inverse, center, title-slide, middle
 
 <style>
@@ -93,6 +101,9 @@ class: inverse, center, title-slide, middle
 <a href="https://github.com/bttomio"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_white_ffffff.png" alt="Fork me on GitHub"></a>
 
 ---
+
+count: false
+
 class: inverse, center, middle
 
 # General View
@@ -127,7 +138,14 @@ The `WDI` package allows us to search and download data from the World Bank (sev
 
 - DataBank, to check variables details </br> [https://databank.worldbank.org/](https://databank.worldbank.org/)
 
+--
+
+- `wbstats` (alternative package) </br> [http://nset-ornl.github.io/wbstats/index.html](http://nset-ornl.github.io/wbstats/index.html)
+
 ---
+
+count: false
+
 class: inverse, center, middle
 
 # Hands-on
@@ -260,6 +278,26 @@ Data_countries %>%
 
 ---
 
+count: false
+
+class: inverse, center, middle
+
+# Some cool graphs
+
+Based on the `webstats` website </br> http://nset-ornl.github.io/wbstats/index.html
+
+<br>
+
+```{css, echo = FALSE}
+.verytiny {
+  font-size: 50%;
+}
+```
+
+![:scale 50%](https://damassets.autodesk.net/content/dam/autodesk/www/autodesk-reasearch/Publications/images/same-stats-different-graphs-image-1920x1000.gif) <br> .verytiny[Source <br> https://damassets.autodesk.net/content/dam/autodesk/www/autodesk-reasearch/Publications/images/same-stats-different-graphs-image-1920x1000.gif]
+
+---
+
 **World maps (1/2)** &#127758;
 
 .panelset[
@@ -298,9 +336,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Plot 1]
 ```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Self-employed in 2019
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
 datW <- WDI(indicator, country="all", start = 2019, end = 2019)
@@ -331,9 +366,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Code Map 2]
 ```{r eval=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Self-employed in 2008
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
 datW <- WDI(indicator, country="all", start = 2008, end = 2008) #<<
@@ -364,9 +396,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Plot 2]
 ```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Self-employed in 2008
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
 datW <- WDI(indicator, country="all", start = 2008, end = 2008)
@@ -397,9 +426,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Code Map 3]
 ```{r eval=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Self-employed in 1991
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
 datW <- WDI(indicator, country="all", start = 1991, end = 1991) #<<
@@ -430,9 +456,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Plot 3]
 ```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Self-employed in 1991
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
 datW <- WDI(indicator, country="all", start = 1991, end = 1991)
@@ -470,9 +493,6 @@ ne_countries(returnclass = "sf") %>%
 .panelset[
 .panel[.panel-name[Code Map 4]
 ```{r eval=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # GDP per capita (constant 2010 US$) in 2019
 indicator <- c("GDP per capita" = 'NY.GDP.PCAP.KD') #<<
 datW <- WDI(indicator, country="all", start = 2019, end = 2019)
@@ -492,7 +512,7 @@ ne_countries(returnclass = "sf") %>%
   filter(iso_a2 != "ATA") %>% # remove Antarctica
   ggplot(aes(fill = `GDP per capita`)) + #<<
   geom_sf() +
-  scale_fill_viridis_c(labels = scales::dollar_format(scale = 1)) +
+  scale_fill_viridis_c(labels = scales::dollar_format(scale = 1)) + #<<
   theme(legend.position="bottom", legend.key.width = unit(2.5, "cm")) + #<<
   labs(
     title = name_GDP_PC, #<<
@@ -503,9 +523,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Plot 4]
 ```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # GDP per capita (constant 2010 US$) in 2019
 indicator <- c("GDP per capita" = 'NY.GDP.PCAP.KD')
 datW <- WDI(indicator, country="all", start = 2019, end = 2019)
@@ -536,9 +553,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Code Map 5]
 ```{r eval=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Unemployment rate,Percent,,, in February 2020
 indicator <- c("Unemployment" = 'UNEMPSA_') #<<
 datW <- WDI(indicator, country="all",start = '2020M02', end = '2020M02') #<<
@@ -557,7 +571,7 @@ ne_countries(returnclass = "sf") %>%
   scale_fill_viridis_c(labels = scales::percent_format(scale = 1)) + #<<
   theme(legend.position="bottom") +
   labs(
-    title = name_UNEMP, #<<
+    title = paste0(name_UNEMP, " in February 2020"), #<<
     fill = NULL,
     caption = "Source: Global Economic Monitor, World Bank" #<<
   )
@@ -565,9 +579,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Plot 5]
 ```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Unemployment rate,Percent,,, in February 2020
 indicator <- c("Unemployment" = 'UNEMPSA_')
 datW <- WDI(indicator, country="all",start = '2020M02', end = '2020M02') #<<
@@ -586,7 +597,7 @@ ne_countries(returnclass = "sf") %>%
   scale_fill_viridis_c(labels = scales::percent_format(scale = 1)) +
   theme(legend.position="bottom") +
   labs(
-    title = name_UNEMP,
+    title = paste0(name_UNEMP, " in February 2020"),
     fill = NULL,
     caption = "Source: Global Economic Monitor, World Bank" 
   )
@@ -594,9 +605,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Code Map 6]
 ```{r eval=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Life expectancy at birth, female (years) in 2018
 indicator <- c("Life expectancy at birth, female (years)" = 'SP.DYN.LE00.FE.IN') #<<
 datW <- WDI(indicator, country="all",start = '2018', end = '2018') #<<
@@ -627,9 +635,6 @@ ne_countries(returnclass = "sf") %>%
 ]
 .panel[.panel-name[Plot 6]
 ```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
-library(rnaturalearth)
-library(tidyverse)
-
 # Life expectancy at birth, female (years) in 2018
 indicator <- c("Life expectancy at birth, female (years)" = 'SP.DYN.LE00.FE.IN')
 datW <- WDI(indicator, country="all",start = '2018', end = '2018')
@@ -656,6 +661,197 @@ ne_countries(returnclass = "sf") %>%
     fill = NULL,
     caption = paste("Source:", source_life) 
   )
+```
+]
+]
+
+---
+
+**Hans Rosling's Gapminder** &#127760;
+
+.panelset[
+.panel[.panel-name[Code HRG 1]
+```{r eval=FALSE}
+indicators <- c(life_exp = "SP.DYN.LE00.IN", 
+                gdp_capita ="NY.GDP.PCAP.CD",
+                pop = "SP.POP.TOTL")
+
+hrg <- WDI(indicators, country="all", start = "2018", end = "2018")
+Data_info <- WDI_data
+Data_countries <- as.data.frame(Data_info$country) 
+
+hrg %>%
+  left_join(Data_countries, "iso2c") %>%
+  filter(region != "Aggregates") %>% # remove aggregates (groups of countries)
+  ggplot() +
+  geom_point(aes(x = gdp_capita, y = life_exp, size = pop, color = region)) +
+  scale_x_continuous(
+    labels = scales::dollar_format(),
+    breaks = scales::log_breaks(n = 10)) +
+  coord_trans(x = 'log10') +
+  scale_size_continuous(
+    labels = scales::number_format(scale = 1/1e6, suffix = "m"),
+    breaks = seq(1e8,1e9, 2e8),
+    range = c(1,20)) +
+  theme_minimal() +
+  labs(
+    title = "An Example of Hans Rosling's Gapminder using WDI (Data for 2018)",
+    x = "GDP per capita (log scale)",
+    y = "Life expectancy at birth",
+    size = "Population",
+    color = NULL,
+    caption = "Source: World Bank")
+```
+]
+.panel[.panel-name[Plot 1]
+```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
+indicators <- c(life_exp = "SP.DYN.LE00.IN", 
+                gdp_capita ="NY.GDP.PCAP.CD",
+                pop = "SP.POP.TOTL")
+
+hrg <- WDI(indicators, country="all", start = "2018", end = "2018")
+Data_info <- WDI_data
+Data_countries <- as.data.frame(Data_info$country) 
+
+hrg %>%
+  left_join(Data_countries, "iso2c") %>%
+  filter(region != "Aggregates") %>% # remove aggregates (groups of countries)
+  ggplot() +
+  geom_point(aes(x = gdp_capita, y = life_exp, size = pop, color = region)) +
+  scale_x_continuous(
+    labels = scales::dollar_format(),
+    breaks = scales::log_breaks(n = 10)) +
+  coord_trans(x = 'log10') +
+  scale_size_continuous(
+    labels = scales::number_format(scale = 1/1e6, suffix = "m"),
+    breaks = seq(1e8,1e9, 2e8),
+    range = c(1,20)) +
+  theme_minimal() +
+  labs(
+    title = "An Example of Hans Rosling's Gapminder using WDI (Data for 2018)",
+    x = "GDP per capita (log scale)",
+    y = "Life expectancy at birth",
+    size = "Population",
+    color = NULL,
+    caption = "Source: World Bank")
+```
+]
+.panel[.panel-name[Code HRG 2]
+```{r eval=FALSE}
+library(ggrepel)
+
+hrg2 <- hrg %>% #<<
+  left_join(Data_countries, "iso2c") %>% #<<
+  filter(region != "Aggregates") # remove aggregates (groups of countries) #<<
+
+ggplot(hrg2) +
+  geom_point(
+    aes(x = gdp_capita, y = life_exp, size = pop, color = region)) +
+  scale_x_continuous(
+    labels = scales::dollar_format(),
+    breaks = scales::log_breaks(n = 10)) +
+  coord_trans(x = 'log10') +
+  scale_size_continuous(
+    labels = scales::number_format(scale = 1/1e6, suffix = "m"),
+    breaks = seq(1e8,1e9, 2e8),
+    range = c(1,20)) +
+  theme_minimal() +
+  labs(x = "GDP per capita (log scale)",
+    y = "Life expectancy at birth",
+    size = "Population",
+    color = NULL,
+    caption = "Source: World Bank") +
+  geom_label_repel(data = subset(hrg2, life_exp > 84 | life_exp < 55), #<<
+                   aes(x = gdp_capita, y = life_exp, label = country.x), #<<
+                   box.padding   = 0.35,  #<<
+                   point.padding = 0.5, #<<
+                   segment.color = 'grey50') #<<
+```
+]
+.panel[.panel-name[Plot 2]
+```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
+hrg2 <- hrg %>%
+  left_join(Data_countries, "iso2c") %>%
+  filter(region != "Aggregates") # remove aggregates (groups of countries)
+
+ggplot(hrg2) +
+  geom_point(
+    aes(x = gdp_capita, y = life_exp, size = pop, color = region)) +
+  scale_x_continuous(
+    labels = scales::dollar_format(),
+    breaks = scales::log_breaks(n = 10)) +
+  coord_trans(x = 'log10') +
+  scale_size_continuous(
+    labels = scales::number_format(scale = 1/1e6, suffix = "m"),
+    breaks = seq(1e8,1e9, 2e8),
+    range = c(1,20)) +
+  theme_minimal() +
+  labs(x = "GDP per capita (log scale)",
+    y = "Life expectancy at birth",
+    size = "Population",
+    color = NULL,
+    caption = "Source: World Bank") +
+  geom_label_repel(data = subset(hrg2, life_exp > 84 | life_exp < 55),
+                   aes(x = gdp_capita, y = life_exp, label = country.x),
+                   box.padding   = 0.35,
+                   point.padding = 0.5,
+                   segment.color = 'grey50')
+```
+]
+.panel[.panel-name[Code Map 3]
+```{r eval=FALSE}
+ggplot(hrg2) +
+  geom_point(
+    aes(x = gdp_capita, y = life_exp, size = pop, color = region)) +
+  scale_x_continuous(
+    labels = scales::dollar_format(),
+    breaks = scales::log_breaks(n = 10)) +
+  coord_trans(x = 'log10') +
+  scale_size_continuous(
+    labels = scales::number_format(scale = 1/1e6, suffix = "m"),
+    breaks = seq(1e8,1e9, 2e8),
+    range = c(1,20)) +
+  theme_minimal() +
+  labs(x = "GDP per capita (log scale)",
+    y = "Life expectancy at birth",
+    size = "Population",
+    color = NULL,
+    caption = "Source: World Bank") +
+  geom_label_repel(data = subset(hrg2, pop > 900000), # 90 millions #<<
+                   aes(x = gdp_capita, y = life_exp, label = country.x),
+                   box.padding   = 0.9, #<<
+                   point.padding = 0.9, #<<
+                   segment.color = 'grey50')
+```
+]
+.panel[.panel-name[Plot 3]
+```{r, fig.width=11, fig.height=7, fig.align='center', echo=FALSE, warning=FALSE, message=FALSE}
+hrg2 <- hrg %>% #<<
+  left_join(Data_countries, "iso2c") %>%
+  filter(region != "Aggregates") # remove aggregates (groups of countries)
+
+ggplot(hrg2) +
+  geom_point(
+    aes(x = gdp_capita, y = life_exp, size = pop, color = region)) +
+  scale_x_continuous(
+    labels = scales::dollar_format(),
+    breaks = scales::log_breaks(n = 10)) +
+  coord_trans(x = 'log10') +
+  scale_size_continuous(
+    labels = scales::number_format(scale = 1/1e6, suffix = "m"),
+    breaks = seq(1e8,1e9, 2e8),
+    range = c(1,20)) +
+  theme_minimal() +
+  labs(x = "GDP per capita (log scale)",
+    y = "Life expectancy at birth",
+    size = "Population",
+    color = NULL,
+    caption = "Source: World Bank") +
+  geom_label_repel(data = subset(hrg2, pop > 90000000), # 90 millions
+                   aes(x = gdp_capita, y = life_exp, label = country.x),
+                   box.padding   = 0.9,
+                   point.padding = 0.9,
+                   segment.color = 'grey50')
 ```
 ]
 ]

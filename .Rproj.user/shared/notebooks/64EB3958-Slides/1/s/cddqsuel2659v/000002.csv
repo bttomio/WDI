@@ -1,5 +1,0 @@
-"0","dat2 <- WDI(indicators, country=c('FR', 'BR'), end = 2019)
-"
-"2","Error in WDI(indicators, country = c(""FR"", ""BR""), end = 2019) : 
-  object 'indicators' not found
-"
