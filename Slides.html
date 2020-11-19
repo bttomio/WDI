@@ -3906,8 +3906,7 @@ hrg %&gt;%
     breaks = seq(1e8,1e9, 2e8),
     range = c(1,20)) +
   theme_minimal() +
-  labs(
-    title = "An Example of Hans Rosling's Gapminder using WDI (Data for 2018)",
+  labs(title = "An Example of Hans Rosling's Gapminder using WDI (Data for 2018)",
     x = "GDP per capita (log scale)",
     y = "Life expectancy at birth",
     size = "Population",
@@ -3974,7 +3973,7 @@ ggplot(hrg2) +
     size = "Population",
     color = NULL,
     caption = "Source: World Bank") +
-* geom_label_repel(data = subset(hrg2, pop &gt; 900000), # 90 millions
+* geom_label_repel(data = subset(hrg2, pop &gt; 90000000), # 90 millions
                    aes(x = gdp_capita, y = life_exp, label = country.x),
 *                  box.padding   = 0.9,
 *                  point.padding = 0.9,
