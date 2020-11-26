@@ -129,7 +129,7 @@ Based on the package website &lt;/br&gt; https://vincentarelbundock.github.io/WD
 
 ---
 
-**Installation** 
+**Installation**
 
 
 ```r
@@ -138,7 +138,7 @@ install.packages('WDI')
 
 --
 
-**Searching for data** 
+**Searching for data**
 
 You need to use **keywords** to search for data with the command `WDIsearch`
 
@@ -3672,7 +3672,7 @@ library(tidyverse)
 
 # Self-employed in 2019
 indicator &lt;- c("Self-employed" = 'SL.EMP.SELF.ZS')
-datW &lt;- WDI(indicator, country="all", start = 2019, end = 2019)
+datWM1 &lt;- WDI(indicator, country="all", start = 2019, end = 2019)
 
 Data_info &lt;- WDI_data
 
@@ -3685,7 +3685,7 @@ source_self_employed &lt;- as.data.frame(Data_info$series) %&gt;%
   select(sourceOrganization)
 
 ne_countries(returnclass = "sf") %&gt;%
-  left_join(datW, c("iso_a2" = "iso2c")) %&gt;%
+  left_join(datWM1, c("iso_a2" = "iso2c")) %&gt;%
   filter(iso_a2 != "ATA") %&gt;% # remove Antarctica
   ggplot(aes(fill = `Self-employed`)) +
   geom_sf() +
@@ -3706,9 +3706,7 @@ ne_countries(returnclass = "sf") %&gt;%
 ```r
 # Self-employed in 2008
 indicator &lt;- c("Self-employed" = 'SL.EMP.SELF.ZS')
-*datW &lt;- WDI(indicator, country="all", start = 2008, end = 2008)
-
-Data_info &lt;- WDI_data
+*datWM2 &lt;- WDI(indicator, country="all", start = 2008, end = 2008)
 
 name_self_employed &lt;- as.data.frame(Data_info$series) %&gt;%
   filter(indicator == "SL.EMP.SELF.ZS") %&gt;%
@@ -3719,7 +3717,7 @@ source_self_employed &lt;- as.data.frame(Data_info$series) %&gt;%
   select(sourceOrganization)
 
 ne_countries(returnclass = "sf") %&gt;%
-  left_join(datW, c("iso_a2" = "iso2c")) %&gt;%
+* left_join(datWM2, c("iso_a2" = "iso2c")) %&gt;%
   filter(iso_a2 != "ATA") %&gt;% # remove Antarctica
   ggplot(aes(fill = `Self-employed`)) +
   geom_sf() +
@@ -3740,9 +3738,7 @@ ne_countries(returnclass = "sf") %&gt;%
 ```r
 # Self-employed in 1991
 indicator &lt;- c("Self-employed" = 'SL.EMP.SELF.ZS')
-*datW &lt;- WDI(indicator, country="all", start = 1991, end = 1991)
-
-Data_info &lt;- WDI_data
+*datWM3 &lt;- WDI(indicator, country="all", start = 1991, end = 1991)
 
 name_self_employed &lt;- as.data.frame(Data_info$series) %&gt;%
   filter(indicator == "SL.EMP.SELF.ZS") %&gt;%
@@ -3753,7 +3749,7 @@ source_self_employed &lt;- as.data.frame(Data_info$series) %&gt;%
   select(sourceOrganization)
 
 ne_countries(returnclass = "sf") %&gt;%
-  left_join(datW, c("iso_a2" = "iso2c")) %&gt;%
+* left_join(datWM3, c("iso_a2" = "iso2c")) %&gt;%
   filter(iso_a2 != "ATA") %&gt;% # remove Antarctica
   ggplot(aes(fill = `Self-employed`)) +
   geom_sf() +
@@ -3781,7 +3777,7 @@ ne_countries(returnclass = "sf") %&gt;%
 ```r
 # GDP per capita (constant 2010 US$) in 2019
 *indicator &lt;- c("GDP per capita" = 'NY.GDP.PCAP.KD')
-datW &lt;- WDI(indicator, country="all", start = 2019, end = 2019)
+*datWM4 &lt;- WDI(indicator, country="all", start = 2019, end = 2019)
 
 Data_info &lt;- WDI_data
 
@@ -3794,7 +3790,7 @@ Data_info &lt;- WDI_data
   select(sourceOrganization) 
 
 ne_countries(returnclass = "sf") %&gt;%
-  left_join(datW, c("iso_a2" = "iso2c")) %&gt;%
+* left_join(datWM4, c("iso_a2" = "iso2c")) %&gt;%
   filter(iso_a2 != "ATA") %&gt;% # remove Antarctica
 * ggplot(aes(fill = `GDP per capita`)) +
   geom_sf() +
@@ -3815,16 +3811,14 @@ ne_countries(returnclass = "sf") %&gt;%
 ```r
 # Unemployment rate,Percent,,, in February 2020
 *indicator &lt;- c("Unemployment" = 'UNEMPSA_')
-*datW &lt;- WDI(indicator, country="all",start = '2020M02', end = '2020M02')
-
-Data_info &lt;- WDI_data
+*datWM5 &lt;- WDI(indicator, country="all",start = '2020M02', end = '2020M02')
 
 *name_UNEMP &lt;- as.data.frame(Data_info$series) %&gt;%
 * filter(indicator == "UNEMPSA_") %&gt;%
   select(name)
 
 ne_countries(returnclass = "sf") %&gt;%
-* left_join(datW, c("iso_a3" = "iso2c")) %&gt;%
+* left_join(datWM5, c("iso_a3" = "iso2c")) %&gt;%
   filter(iso_a2 != "ATA") %&gt;% # remove Antarctica
 * ggplot(aes(fill = `Unemployment`)) +
   geom_sf() +
@@ -3845,7 +3839,7 @@ ne_countries(returnclass = "sf") %&gt;%
 ```r
 # Life expectancy at birth, female (years) in 2018
 *indicator &lt;- c("Life expectancy at birth, female (years)" = 'SP.DYN.LE00.FE.IN')
-*datW &lt;- WDI(indicator, country="all",start = '2018', end = '2018')
+*datWM6 &lt;- WDI(indicator, country="all",start = '2018', end = '2018')
 
 Data_info &lt;- WDI_data
 
@@ -3858,7 +3852,7 @@ Data_info &lt;- WDI_data
   select(sourceOrganization)
 
 ne_countries(returnclass = "sf") %&gt;%
-  left_join(datW, c("iso_a2" = "iso2c")) %&gt;%
+* left_join(datWM6, c("iso_a2" = "iso2c")) %&gt;%
   filter(iso_a2 != "ATA") %&gt;% # remove Antarctica
 * ggplot(aes(fill = `Life expectancy at birth, female (years)`)) +
   geom_sf() +
@@ -3926,7 +3920,7 @@ hrg %&gt;%
 * left_join(Data_countries, "iso2c") %&gt;%
 * filter(region != "Aggregates") # remove aggregates (groups of countries)
 
-ggplot(hrg2) +
+*ggplot(hrg2) +
   geom_point(
     aes(x = gdp_capita, y = life_exp, size = pop, color = region)) +
   scale_x_continuous(

@@ -3,22 +3,22 @@
     "path": "~/GitHub/WDI/World maps.R",
     "project_path": "World maps.R",
     "type": "r_source",
-    "hash": "1732247138",
+    "hash": "671984557",
     "contents": "",
     "dirty": false,
     "created": 1605816997927.0,
     "source_on_save": false,
     "relative_order": 3,
     "properties": {
-        "cursorPosition": "169,0",
-        "scrollLine": "0"
+        "cursorPosition": "12,0",
+        "scrollLine": "11"
     },
-    "folds": "7|19|8|0|\n9|14|33|0|\n34|14|58|0|\n59|13|83|0|\n84|19|85|0|\n86|14|110|0|\n111|14|138|0|\n139|14|169|0|\n",
-    "lastKnownWriteTime": 1605818863,
+    "folds": "",
+    "lastKnownWriteTime": 1606396813,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1605820475335,
+    "last_content_update": 1606396813997,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -11,7 +11,7 @@ lapply(list.of.packages, library, character.only = T, quietly = T)
 
 # Self-employed in 2019
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
-datW <- WDI(indicator, country="all", start = 2019, end = 2019)
+datWM1 <- WDI(indicator, country="all", start = 2019, end = 2019)
 Data_info <- WDI_data
 name_self_employed <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SL.EMP.SELF.ZS") %>%
@@ -20,7 +20,7 @@ source_self_employed <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SL.EMP.SELF.ZS") %>%
   select(sourceOrganization)
 ne_countries(returnclass = "sf") %>%
-  left_join(datW, c("iso_a2" = "iso2c")) %>%
+  left_join(datWM1, c("iso_a2" = "iso2c")) %>%
   filter(iso_a2 != "ATA") %>% # remove Antarctica
   ggplot(aes(fill = `Self-employed`)) +
   geom_sf() +
@@ -36,8 +36,7 @@ ne_countries(returnclass = "sf") %>%
 
 # Self-employed in 2008
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
-datW <- WDI(indicator, country="all", start = 2008, end = 2008)
-Data_info <- WDI_data
+datWM2 <- WDI(indicator, country="all", start = 2008, end = 2008)
 name_self_employed <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SL.EMP.SELF.ZS") %>%
   select(name)
@@ -45,7 +44,7 @@ source_self_employed <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SL.EMP.SELF.ZS") %>%
   select(sourceOrganization)
 ne_countries(returnclass = "sf") %>%
-  left_join(datW, c("iso_a2" = "iso2c")) %>%
+  left_join(datWM2, c("iso_a2" = "iso2c")) %>%
   filter(iso_a2 != "ATA") %>% # remove Antarctica
   ggplot(aes(fill = `Self-employed`)) +
   geom_sf() +
@@ -61,8 +60,7 @@ ne_countries(returnclass = "sf") %>%
 
 # Self-employed in 1991
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')
-datW <- WDI(indicator, country="all", start = 1991, end = 1991)
-Data_info <- WDI_data
+datWM3 <- WDI(indicator, country="all", start = 1991, end = 1991)
 name_self_employed <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SL.EMP.SELF.ZS") %>%
   select(name)
@@ -70,7 +68,7 @@ source_self_employed <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SL.EMP.SELF.ZS") %>%
   select(sourceOrganization)
 ne_countries(returnclass = "sf") %>%
-  left_join(datW, c("iso_a2" = "iso2c")) %>%
+  left_join(datWM3, c("iso_a2" = "iso2c")) %>%
   filter(iso_a2 != "ATA") %>% # remove Antarctica
   ggplot(aes(fill = `Self-employed`)) +
   geom_sf() +
@@ -88,8 +86,7 @@ ne_countries(returnclass = "sf") %>%
 
 # GDP per capita (constant 2010 US$) in 2019
 indicator <- c("GDP per capita" = 'NY.GDP.PCAP.KD')
-datW <- WDI(indicator, country="all", start = 2019, end = 2019)
-Data_info <- WDI_data
+datWM4 <- WDI(indicator, country="all", start = 2019, end = 2019)
 name_GDP_PC <- as.data.frame(Data_info$series) %>%
   filter(indicator == "NY.GDP.PCAP.KD") %>%
   select(name)
@@ -97,7 +94,7 @@ source_GDP_PC <- as.data.frame(Data_info$series) %>%
   filter(indicator == "NY.GDP.PCAP.KD") %>%
   select(sourceOrganization) 
 ne_countries(returnclass = "sf") %>%
-  left_join(datW, c("iso_a2" = "iso2c")) %>%
+  left_join(datWM4, c("iso_a2" = "iso2c")) %>%
   filter(iso_a2 != "ATA") %>% # remove Antarctica
   ggplot(aes(fill = `GDP per capita`)) +
   geom_sf() +
@@ -119,13 +116,12 @@ UNEMP_search <- WDIsearch('unemployment')
 
 # Unemployment rate,Percent,,, in February 2020 - Global Economic Monitor
 indicator <- c("Unemployment" = 'UNEMPSA_')
-datW <- WDI(indicator, country="all",start = '2020M02', end = '2020M02')
-Data_info <- WDI_data
+datWM5 <- WDI(indicator, country="all",start = '2020M02', end = '2020M02')
 name_UNEMP <- as.data.frame(Data_info$series) %>%
   filter(indicator == "UNEMPSA_") %>%
   select(name)
 ne_countries(returnclass = "sf") %>%
-  left_join(datW, c("iso_a3" = "iso2c")) %>%
+  left_join(datWM5, c("iso_a3" = "iso2c")) %>%
   filter(iso_a2 != "ATA") %>% # remove Antarctica
   ggplot(aes(fill = `Unemployment`)) +
   geom_sf() +
@@ -147,8 +143,7 @@ life_search <- WDIsearch('life')
 
 # Life expectancy at birth, female (years) in 2018
 indicator <- c("Life expectancy at birth, female (years)" = 'SP.DYN.LE00.FE.IN')
-datW <- WDI(indicator, country="all",start = '2018', end = '2018')
-Data_info <- WDI_data
+datWM6 <- WDI(indicator, country="all",start = '2018', end = '2018')
 name_life <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SP.DYN.LE00.FE.IN") %>%
   select(name)
@@ -156,7 +151,7 @@ source_life <- as.data.frame(Data_info$series) %>%
   filter(indicator == "SP.DYN.LE00.FE.IN") %>%
   select(sourceOrganization)
 ne_countries(returnclass = "sf") %>%
-  left_join(datW, c("iso_a2" = "iso2c")) %>%
+  left_join(datWM6, c("iso_a2" = "iso2c")) %>%
   filter(iso_a2 != "ATA") %>% # remove Antarctica
   ggplot(aes(fill = `Life expectancy at birth, female (years)`)) +
   geom_sf() +
