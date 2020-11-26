@@ -187,8 +187,10 @@ head(dat1)
 
 
 ```r
-# indicators = NY.GDP.PCAP.KD and NY.GDP.PCAP.KN / names = GDP per capita (constant 2010 US$) and GDP per capita (constant LCU)
-indicators &lt;- c("GDP per capita (US$)" = 'NY.GDP.PCAP.KD', "GDP per capita (LCU)" = "NY.GDP.PCAP.KN")
+# indicators = NY.GDP.PCAP.KD and NY.GDP.PCAP.KN / names = GDP per capita (constant 2010 US$) 
+# and GDP per capita (constant LCU)
+indicators &lt;- c("GDP per capita (US$)" = 'NY.GDP.PCAP.KD', 
+                "GDP per capita (LCU)" = "NY.GDP.PCAP.KN")
 dat2 &lt;- WDI(indicators, country=c('FR', 'BR'), end = 2019)
 head(dat2)
 ```

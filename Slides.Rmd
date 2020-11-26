@@ -198,8 +198,10 @@ head(dat1)
 *GDP per capita (US$ and local currency unity) for France (FR) and Brazil (BR)*
 
 ```{r}
-# indicators = NY.GDP.PCAP.KD and NY.GDP.PCAP.KN / names = GDP per capita (constant 2010 US$) and GDP per capita (constant LCU)
-indicators <- c("GDP per capita (US$)" = 'NY.GDP.PCAP.KD', "GDP per capita (LCU)" = "NY.GDP.PCAP.KN")
+# indicators = NY.GDP.PCAP.KD and NY.GDP.PCAP.KN / names = GDP per capita (constant 2010 US$) 
+# and GDP per capita (constant LCU)
+indicators <- c("GDP per capita (US$)" = 'NY.GDP.PCAP.KD', 
+                "GDP per capita (LCU)" = "NY.GDP.PCAP.KN")
 dat2 <- WDI(indicators, country=c('FR', 'BR'), end = 2019)
 head(dat2)
 ```
