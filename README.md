@@ -7,7 +7,10 @@ This repository was created to build my presentation for the
 It's a presentation on how to use the ```WDI``` package. More information
 about the package on its [website](https://vincentarelbundock.github.io/WDI/).
 
-Video is available here: https://www.youtube.com/watch?v=vDfZ_Vxzgeo.
+More links:
+
+Slides: https://bttomio.github.io/slides/WDI/Slides.html
+Video: https://www.youtube.com/watch?v=vDfZ_Vxzgeo.
 
 # Script files
 
