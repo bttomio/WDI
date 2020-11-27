@@ -9,8 +9,8 @@ about the package on its [website](https://vincentarelbundock.github.io/WDI/).
 
 More links:
 
-Slides: https://bttomio.github.io/slides/WDI/Slides.html
-Video: https://www.youtube.com/watch?v=vDfZ_Vxzgeo.
+1. Slides: https://bttomio.github.io/slides/WDI/Slides.html
+2. Video: https://www.youtube.com/watch?v=vDfZ_Vxzgeo.
 
 # Script files
 
