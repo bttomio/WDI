@@ -1,8 +1,0 @@
-"0","options(htmltools.dir.version = FALSE)"
-"0","library(WDI)"
-"0","library(dplyr)"
-"0","library(rnaturalearth)"
-"0","library(tidyverse)"
-"0","library(ggplot2)"
-"0","library(ggthemes)"
-"0","library(ggrepel)"
