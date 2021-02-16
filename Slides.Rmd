@@ -49,6 +49,7 @@ library(tidyverse)
 library(ggplot2)
 library(ggthemes)
 library(ggrepel)
+library(icon)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -111,7 +112,7 @@ class: inverse, center, middle
 
 ---
 
-# World Bank data in `r icon::fa_r_project(colour = "#384CB7")`
+# World Bank data in `r icon::fontawesome$brands$"r-project"`
 
 The `WDI` package allows us to search and download data from the World Bank (several datasets, with thousands of variables)
 
@@ -862,9 +863,16 @@ class: inverse, center
 
 .center[
 # Thank you!
-`r icon::fa("cog", size = 1, animate = "spin", color = "white")` [`bttomio@furb.br`](bttomio@furb.br)
 
-`r icon::fa("twitter", size = 1, color = "white")` [@bttomio](https://twitter.com/bttomio)
+```{r icon-style, echo=FALSE, include=FALSE}
+icon_style(fontawesome("cog", style = "solid"), size = 1, animate = "spin", color = "white")
+
+icon_style(fontawesome("twitter", style = "brands"), size = 1, color = "white")
+```
+
+`r icon::fontawesome$solid$cog` [`bttomio@furb.br`](bttomio@furb.br)
+
+`r icon::fontawesome$brands$twitter` [@bttomio](https://twitter.com/bttomio)
 ]
 
 <br><br><br><br>Slides created with [`xaringan`](https://github.com/yihui/xaringan) and [`xaringanthemer`](https://github.com/gadenbuie/xaringanthemer).

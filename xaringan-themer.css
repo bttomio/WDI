@@ -100,11 +100,6 @@ h1, h2, h3 {
   font-size: var(--code-inline-font-size);
   color: #13A10E;
 }
-.remark-slide-number {
-  color: #000000;
-  opacity: 1;
-  font-size: 0.9em;
-}
 strong { color: var(--text-bold-color); }
 a, a > code {
   color: var(--link-color);
@@ -254,4 +249,3 @@ table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
 .bg-black {
   background-color: var(--black);
 }
-
