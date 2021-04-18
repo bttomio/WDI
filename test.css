@@ -1,0 +1,12 @@
+.red {
+  color: red;  
+}
+
+.red:before {
+    content: '\003C';
+}
+
+.red:after {
+    content: '\003E';
+}
+
