@@ -57,3 +57,4 @@ Data_countries %>%
   kable("html") %>%
   kable_styling(font_size = 11) %>%
   scroll_box(width = "100%", height = "60%")
+

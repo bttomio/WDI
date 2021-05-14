@@ -56,7 +56,7 @@ ne_countries(returnclass = "sf") %>%
     caption = paste("Source:", source_self_employed) 
   )
 
-## Code Map 3####
+## Code Map 3 ####
 
 # Self-employed in 1991
 indicator <- c("Self-employed" = 'SL.EMP.SELF.ZS')

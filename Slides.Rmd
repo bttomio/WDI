@@ -795,7 +795,7 @@ ggplot(hrg2) +
                    segment.color = 'grey50')
 ```
 ]
-.panel[.panel-name[Code Map 3]
+.panel[.panel-name[Code HRG 3]
 ```{r eval=FALSE}
 ggplot(hrg2) +
   geom_point(
